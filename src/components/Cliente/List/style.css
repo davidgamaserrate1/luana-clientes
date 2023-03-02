@@ -1,0 +1,24 @@
+.barra-cadastro{
+  background: #0d0e0f ;
+  position: relative;
+  width: 106%;
+ 
+  left: -3%;
+   
+}
+.btn{
+    margin: 2px;
+    
+  }
+.divbtn{
+float: left;
+}
+.table-head{
+    background:#e70052  ;
+    color: #ffffff;
+}
+
+
+.card{
+  background:#f1ecea  ; 
+}

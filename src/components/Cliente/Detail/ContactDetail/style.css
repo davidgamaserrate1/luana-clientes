@@ -1,0 +1,31 @@
+ 
+h3{
+    text-transform: uppercase;
+}
+.cliente-contato{
+    text-transform: uppercase ;
+    font-weight: bold;
+    
+}
+#clinte-contato_info{
+    text-transform: lowercase;
+    font-weight: 300;
+    
+    
+}
+.cliente-nome {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.cliente-contato {
+    padding: 5px;
+}
+
+ 
+th, td{
+ 
+    
+    padding: 10px;
+   height: 15px;
+}

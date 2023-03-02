@@ -1,0 +1,19 @@
+ 
+div.row {
+  clear:both;
+  width: 100%;
+}
+.App {
+  text-align: center;
+  background: #0d0e0f ;
+  color: #FFFFFF;
+  height: 100%;
+  
+}
+
+*{
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+  
