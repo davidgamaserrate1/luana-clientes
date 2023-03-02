@@ -8,7 +8,6 @@ import ClientEdit from './components/Cliente/Edit/Edit.js';
 import EditService from './components/Cliente/Detail/ServiceDetail/EditService/EditService.js'; 
 import ServiceCreate from './components/Cliente/Detail/ServiceDetail/CreateService/CreateService.js'
 
-console.log(process.env )
 
 function App() {
   return (

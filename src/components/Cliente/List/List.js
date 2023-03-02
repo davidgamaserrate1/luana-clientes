@@ -3,16 +3,12 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import barra from '../../../assets/barra.png'
 
-
-  
-
-const List = () => {
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/clientes/'
+const List = () => {    
     const [cliente, setCliente] = useState(null);
 
     const RemoveClient = (id) => {
         if (window.confirm('Tem certeza que deseja excluir este cliente?')) {
-            fetch(baseURL + id,{method:'DELETE'}).then((res) => {
+            fetch(process.env.REACT_APP_CLIENT + id,{method:'DELETE'}).then((res) => {
                 window.location.reload();
             }).catch((err) => {
                 console.log(err + ' resp : ' + err.message)
@@ -21,7 +17,7 @@ const List = () => {
     }
 
     useEffect(() => {
-        fetch(baseURL).then((res) => {
+        fetch(process.env.REACT_APP_CLIENT).then((res) => {
             return res.json();
         }).then((resp) => {
             setCliente(resp);

@@ -1,15 +1,11 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
 
-
-
 const Edit = () => {
     const { clientid } = useParams();
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/clientes/'
-    
 
     useEffect(() => {
-        fetch(baseURL + clientid).then((res) => {
+        fetch(process.env.REACT_APP_CLIENT + clientid).then((res) => {
             return res.json();
         }).then((resp) => {
             console.log(resp.nome)
@@ -35,8 +31,8 @@ const Edit = () => {
         e.preventDefault();
 
         const cliente = { nome, instagram, telefone, organizacao };
-        console.log('cliente + ' + cliente)
-        fetch(baseURL + 'editar/' + clientid, {
+        
+        fetch( process.env.REACT_APP_EDIT_CLIENT + clientid, {
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(cliente)

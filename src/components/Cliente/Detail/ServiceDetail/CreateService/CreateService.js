@@ -5,23 +5,20 @@ import { Link, useNavigate } from "react-router-dom";
 const ServiceCreate = (props)=>{
     const navigate = useNavigate();
     const {clientid} =  useParams()
-
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/servico/adicionar/'    
     const [id] = useState("")
     const [nome, setNome] = useState("")
     const [descricao, setDescricao] = useState("")
     const [data, setData] = useState("")
     const [valor, setValor] = useState("")      
-    const [validation, setValidation] = useState(false)    
-    
-    //const [cliente_id, setCliente_id] =useState(clientid)   
+    const [validation, setValidation] = useState(false)       
+
 
     const handleSubmit = (e) =>{
         e.preventDefault();
         const cliente_id = clientid
         const service = {nome,  descricao, data, valor,cliente_id}
 
-        fetch(baseURL + clientid, {
+        fetch(process.env.REACT_APP_ADD_SERVICE + clientid, {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify(service),

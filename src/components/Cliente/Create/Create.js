@@ -3,24 +3,18 @@ import { Link, useNavigate } from 'react-router-dom'
 import './style.css'
  
 const Create = () => {
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/clientes/'
-    
     const [id] = useState("")
-
     const [nome, setNome] = useState("")
     const [instagram, setInstagram] = useState("")
     const [telefone, setTelefone] = useState("")
     const [organizacao, setOrganizacao] = useState("")
     const [validation, setValidation] = useState(false)
-
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const cliente = { nome, instagram, telefone, organizacao };
-
-        fetch(baseURL + 'adicionar', {
+        fetch(process.env.REACT_APP_ADD_CLIENT, {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify(cliente),
@@ -39,7 +33,6 @@ const Create = () => {
             <div className="row">
                 <div className="offset-lg-3 col-lg-6">
                     <div className="container">
-
                         <div className="card" style={{ "textAlign": "left", "background": "#e70052 ", "color": "#ffffff", "fontFamily": "Montserrat, sans-serif" }}>
                             <div className="card-tittle" style={{ "textAlign": "center", "padding": "10px" }}>  Adicionar Cliente </div>
                             <div className="card-body">

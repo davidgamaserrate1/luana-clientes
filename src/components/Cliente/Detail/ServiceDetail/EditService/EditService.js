@@ -5,22 +5,14 @@ import {   useParams } from "react-router";
  
 
 const EditService = ()=>{
-      
-
     const _id = useParams();
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/servico/editar/'
     const navigate = useNavigate();
-    //const history = useHistory();
-    // function goBack(){
-    //     history.goBack();
-    // }
-
+ 
     useEffect(()=>{
-        fetch(baseURL + _id.clientid).then((res) => {    
-            //console.log(res)      
+        fetch(process.env.REACT_APP_EDIT_SERVICE + _id.clientid).then((res) => {    
+            
             return res.json();
-        }).then((resp)=> { 
-            //console.log('resp.nome ' + resp.nome)                      
+        }).then((resp)=> {             
             setNome(resp[0].nome)
             setDescricao(resp[0].descricao)
             setData(resp[0].data)
@@ -32,8 +24,7 @@ const EditService = ()=>{
     const [nome, setNome]= useState("")
     const [descricao, setDescricao] =useState("")
     const [data, setData]=useState("")
-    const [valor, setValor]=useState("")
-    // console.log(_id.clientid)
+    const [valor, setValor]=useState("")    
 
     const backHistory = ()=>{
         navigate(-1) ;
@@ -41,10 +32,9 @@ const EditService = ()=>{
     
     const handleSubmit = (e)=>{
         e.preventDefault();
-
         const servico = {nome, descricao, data, valor}
-        console.log(  JSON.stringify(servico))
-        fetch(baseURL+_id.clientid, {            
+        
+        fetch(process.env.REACT_APP_EDIT_SERVICE+_id.clientid, {            
             method: "PUT",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(servico)
@@ -92,8 +82,7 @@ const EditService = ()=>{
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
-                                        <button onClick={handleSubmit} className='btn btn-success' type='submit'>Salvar</button>                                            
-                                        {/* <Link to='/' className='btn btn-primary'> Voltar </Link> */}
+                                        <button onClick={handleSubmit} className='btn btn-success' type='submit'>Salvar</button>                                                                                    
                                         <div  className='btn btn-primary' onClick={backHistory}> Voltar </div>
 
                                     </div>

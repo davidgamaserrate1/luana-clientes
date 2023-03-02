@@ -4,11 +4,10 @@ import { Link, useParams } from "react-router-dom"
 
 const ContactDetail = ( idCliente) => {
     const { clientid } = useParams();
-    const [cliente, setCliente] = useState({})
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/clientes/'
+    const [cliente, setCliente] = useState({})    
 
     useEffect(() => {
-        fetch(baseURL + clientid).then((res) => {
+        fetch(process.env.REACT_APP_CLIENT + clientid).then((res) => {
             return res.json();
         }).then((resp) => {
             setCliente(resp);            

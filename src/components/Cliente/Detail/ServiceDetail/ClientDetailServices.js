@@ -5,11 +5,10 @@ import { Link, useParams } from "react-router-dom";
 const ClientDetailServices = (props)=>{
        
     const {clientid} = useParams();
-    const [servico, setServico] = useState({});
-    const baseURL = 'https://api-clintes-dep-davidgamaserrate1.vercel.app/servico/'
+    const [servico, setServico] = useState({});   
 
     useEffect(()=>{
-        fetch(baseURL+clientid).then((res)=>{
+        fetch(process.env.REACT_APP_SERVICE+clientid).then((res)=>{
             return res.json()
         }).then((res)=>{
             setServico(res)            
@@ -30,7 +29,7 @@ const ClientDetailServices = (props)=>{
     const RemoveSerice = (id) => {
 
         if (window.confirm('Tem certeza que deseja excluir este serviço?')) {
-            fetch(baseURL + id,{method:'DELETE'}).then((res) => {
+            fetch(process.env.REACT_APP_SERVICE + id,{method:'DELETE'}).then((res) => {
                 window.location.reload();
             }).catch((err) => {
                 console.log(err + ' resp : ' + err.message)
