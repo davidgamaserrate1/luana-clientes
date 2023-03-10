@@ -2,8 +2,10 @@ import './style.css'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import barra from '../../../assets/barra.png'
+import useAuth from '../../../hooks/useAuth';  
 
 const List = () => {    
+    const signed = useAuth().signed;
     const [cliente, setCliente] = useState(null);
 
     const RemoveClient = (id) => {

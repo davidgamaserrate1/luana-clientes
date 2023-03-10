@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from "react";
-
+ 
 const Edit = () => {
     const { clientid } = useParams();
 
