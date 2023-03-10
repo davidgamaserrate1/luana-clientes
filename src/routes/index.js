@@ -1,6 +1,6 @@
 
 
-import { BrowserRouter, Route, Routes  } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, useNavigate  } from 'react-router-dom'
 import ClientList from '../components/Cliente/List/List.js';
 import Create from '../components/Cliente/Create/Create.js';
 import ClientDetail from '../components/Cliente/Detail/Index.js';
@@ -15,15 +15,29 @@ import { useEffect, useState } from 'react';
 
 
 function RoutesApp() {   
-   
-   
-const Private =({Item}) =>{       
-   
-    const signed = useAuth().signed;
-    return signed > 0 ? <Item/> : <Route path='/login' element={ <Login/>}></Route> 
-   
+  const navigate = useNavigate()  ;
   
-}
+  
+  
+  const Private =({Item}) =>{ 
+    const signed = false;
+   
+      console.log(useAuth())
+      if(signed)
+      return <Item/>
+      else {
+       
+        navigate('/')
+        return <Route path='*' element={ <Login/>}></Route> 
+      }
+     
+    
+
+    
+       
+    
+  }
+ 
   return (
     
         <BrowserRouter>  
