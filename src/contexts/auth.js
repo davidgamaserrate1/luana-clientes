@@ -7,8 +7,8 @@ export const AuthProvider = ({children}) => {
     
     const makeLogin = (login,password) =>{
         let loginParams = { login, password }        
-
-        fetch('http://localhost:8000/users', {
+                //process.env.REACT_APP_USER
+        fetch(process.env.REACT_APP_USER, {
             method: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             body: JSON.stringify(loginParams),

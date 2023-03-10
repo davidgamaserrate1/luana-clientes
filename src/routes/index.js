@@ -15,33 +15,17 @@ import { useEffect, useState } from 'react';
 
 
 function RoutesApp() {   
-  const navigate = useNavigate()  ;
-  
   
   
   const Private =({Item}) =>{ 
-    const signed = false;
-   
-      console.log(useAuth())
-      if(signed)
-      return <Item/>
-      else {
-       
-        navigate('/')
-        return <Route path='*' element={ <Login/>}></Route> 
-      }
-     
-    
-
-    
-       
-    
+    const signed = useAuth().signed;
+    return signed ?  <Item/> : <Route path='*' element={ <Login/>}></Route> 
   }
  
   return (
     
         <BrowserRouter>  
-          <Routes>                    
+          <Routes>    
             <Route path='/login' element={ <Login/>}></Route>
 
             <Route path='/' element={ < Private Item={ClientList} />}></Route>
@@ -52,14 +36,9 @@ function RoutesApp() {
             <Route path='/servico/adicionar/:clientid' element={ < Private Item={ServiceCreate} />}></Route>            
             <Route path='/servico/editar/:clientid' element={ < Private Item={EditService} />}></Route>            
           </Routes>
-        </BrowserRouter>
-      
-    
+        </BrowserRouter> 
                 
   );
-
-        
- 
 }
 
 export default RoutesApp;

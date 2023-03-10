@@ -24,18 +24,13 @@ const Login = () =>{
             return;
         }
 
-          makeLogin(login,password)
+        makeLogin(login,password)
+                  
+        if (token){
+            alert('Login realizado com sucesso') 
+            navigate('/')  
+        }
          
-          
-          // Usage!
-        
-              // Do something after the sleep!
-              if (token){
-                alert('Login realizado com sucesso') 
-                navigate('/')  
-            }
-            else 
-            alert('Login incorreto')
          
        
          
